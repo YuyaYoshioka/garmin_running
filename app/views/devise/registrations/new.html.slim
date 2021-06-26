@@ -1,0 +1,47 @@
+h2
+  | ユーザー登録
+  = @params
+= form_with model: @user, url: user_registration_path do |f|
+  = render "devise/shared/error_messages", resource: @user
+  .field
+    = f.label :name
+    br
+    = f.text_field :name
+  .field
+    = f.label :age
+    br
+    = f.number_field :age
+  .field
+    = f.label :normal_heartbeat
+    br
+    = f.number_field :normal_heartbeat
+  .field
+    = f.label :max_heartbeat
+    br
+    = f.number_field :max_heartbeat
+  .field
+    = f.label :maximal_oxygen_consumption
+    br
+    = f.number_field :maximal_oxygen_consumption, step: '0.001'
+  .field
+    = f.label :lactate_threshold
+    br
+    = f.number_field :lactate_threshold, step: '0.001'
+  .field
+    = f.label :sex
+    br
+    = f.select :sex, options_for_select([['男性','man'],['女性','woman']],'man')
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      em
+        = "(#{@minimum_password_length}文字以上)"
+    br
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    = f.label :password_confirmation
+    br
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .actions
+    = f.submit "登録"
+= render "devise/shared/links"
