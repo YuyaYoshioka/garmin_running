@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        id: ID
+        name: 名前
+        password: パスワード
+        age: 年齢
+        normal_heartbeat: 平常時心拍数
+        max_heartbeat: 最大心拍数
+        maximal_oxygen_consumption: 最大酸素摂取量(VO2MAX)
+        lactate_threshold: 乳酸性作業閾(LT)
+        sex: 性別
