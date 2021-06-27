@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_06_26_081027) do
     t.integer "maximal_oxygen_consumption", null: false
     t.integer "lactate_threshold", null: false
     t.integer "sex", null: false
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_users_on_name", unique: true
