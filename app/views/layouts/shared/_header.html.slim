@@ -1,0 +1,4 @@
+header
+  - if current_user
+    = current_user.name
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
