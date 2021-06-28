@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :posts, dependent: :destroy
+
   validates :name, presence: true, length: { maximum: 200 }
   validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0}
   validates :normal_heartbeat, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0}
