@@ -1,15 +1,16 @@
 ja:
   activerecord:
     models:
-      user: ユーザー
+      post: 投稿
     attributes:
-      user:
-        name: 名前
-        password: パスワード
-        age: 年齢
+      post:
+        title: タイトル
+        content: 内容
+        distance: 走行距離
+        velocity: 速度
         normal_heartbeat: 平常時心拍数
         max_heartbeat: 最大心拍数
         maximal_oxygen_consumption: 最大酸素摂取量(VO2MAX)
         lactate_threshold: 乳酸性作業閾値(LT値)
-        sex: 性別
         body_weight: 体重
+        posted_at: 投稿日

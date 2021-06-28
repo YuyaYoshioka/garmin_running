@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_26_081027) do
+ActiveRecord::Schema.define(version: 2021_06_27_151226) do
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.integer "distance", default: 0, null: false
+    t.integer "velocity", default: 0, null: false
+    t.integer "normal_heartbeat", null: false
+    t.integer "max_heartbeat", null: false
+    t.integer "maximal_oxygen_consumption", null: false
+    t.integer "lactate_threshold", null: false
+    t.integer "body_weight", null: false
+    t.date "posted_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
@@ -24,7 +41,9 @@ ActiveRecord::Schema.define(version: 2021_06_26_081027) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "body_weight", default: 0, null: false
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  add_foreign_key "posts", "users"
 end

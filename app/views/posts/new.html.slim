@@ -1,0 +1,46 @@
+= form_with model: @post do |f|
+  .field
+    = f.label :title
+    br
+    = f.text_field :title
+  .field
+    = f.label :content
+    br
+    = f.text_area :content
+  .field
+    = f.label :distance
+    br
+    = f.number_field :distance, step: '0.001'
+    'km
+  .field
+    = f.label :velocity
+    br
+    = f.number_field :velocity, step: '0.001'
+    '分/km
+  .field
+    = f.label :normal_heartbeat
+    br
+    = f.number_field :normal_heartbeat, value: current_user.normal_heartbeat
+  .field
+    = f.label :max_heartbeat
+    br
+    = f.number_field :max_heartbeat, value: current_user.max_heartbeat
+  .field
+    = f.label :maximal_oxygen_consumption
+    br
+    = f.number_field :maximal_oxygen_consumption, step: '0.001', value: current_user.maximal_oxygen_consumption
+  .field
+    = f.label :lactate_threshold
+    br
+    = f.number_field :lactate_threshold, step: '0.001', value: current_user.lactate_threshold
+  .field
+    = f.label :body_weight
+    br
+    = f.number_field :body_weight, step: '0.001', value: current_user.body_weight
+  .field
+    = f.label :posted_at
+    br
+    = f.date_select :posted_at
+
+  .actions
+    = f.submit "投稿"
