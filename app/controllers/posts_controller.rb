@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  include ActiveRecord::AttributeAssignment
-
   def new
     @post = Post.new
   end
