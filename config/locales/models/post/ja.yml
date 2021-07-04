@@ -7,10 +7,11 @@ ja:
         title: タイトル
         content: 内容
         distance: 走行距離
-        velocity: 速度
+        velocity_minute: 速度
+        velocity_second: 速度
         normal_heartbeat: 平常時心拍数
         max_heartbeat: 最大心拍数
         maximal_oxygen_consumption: 最大酸素摂取量(VO2MAX)
         lactate_threshold: 乳酸性作業閾値(LT値)
         body_weight: 体重
-        posted_at: 投稿日
+        posted_at: 投稿日@pos

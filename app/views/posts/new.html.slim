@@ -13,10 +13,12 @@
     = f.number_field :distance, step: '0.001'
     'km
   .field
-    = f.label :velocity
+    = f.label :velocity_minute
     br
-    = f.number_field :velocity, step: '0.001'
-    '分/km
+    = f.number_field :velocity_minute
+    '分
+    = f.number_field :velocity_second
+    '秒/kmf
   .field
     = f.label :normal_heartbeat
     br

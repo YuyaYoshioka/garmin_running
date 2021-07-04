@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   private
 
   def posts_params
-    params.require(:post).permit(:title, :content, :distance, :velocity, :normal_heartbeat, :max_heartbeat,
+    params.require(:post).permit(:title, :content, :distance, :velocity_minute, :velocity_second, :normal_heartbeat, :max_heartbeat,
                                  :maximal_oxygen_consumption, :lactate_threshold, :body_weight, :posted_at)
   end
 end
