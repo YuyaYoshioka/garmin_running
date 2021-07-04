@@ -1,5 +1,8 @@
-- flash.each do |type,messages|
-  ul
-  - messages.each do |message|
-    li
-      = message
+- flash.each do |type,message|
+  - if message.is_a?(String)
+    = message
+  - else
+    ul
+    - messages.each do |message|
+      li
+        = message
