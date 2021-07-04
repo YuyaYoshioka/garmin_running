@@ -1,6 +1,6 @@
-- flash.each do |type,message|
-  - if message.is_a?(String)
-    = message
+- flash.each do |type,messages|
+  - if messages.is_a?(String)
+    = messages
   - else
     ul
     - messages.each do |message|
