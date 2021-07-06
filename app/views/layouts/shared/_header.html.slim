@@ -1,5 +1,6 @@
 header
   - if current_user
     = current_user.name
+    = link_to "走行距離", distance_page_path
     = link_to "新規投稿", new_post_url
     = link_to "ログアウト", destroy_user_session_path, method: :delete

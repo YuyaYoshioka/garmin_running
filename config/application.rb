@@ -42,7 +42,7 @@ module GarminRunning
     config.generators.system_tests = nil
 
     config.time_zone = 'Tokyo'
-    config.active_record.default_timezone = :local
+    config.active_record.default_timezone = :utc
 
 
     config.i18n.default_locale = :ja
