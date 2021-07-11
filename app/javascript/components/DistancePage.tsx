@@ -34,7 +34,7 @@ const DistancePage: React.FC<DistancePageProps> = ( { monthValues, currentMonth 
   }, [graphData]);
 
   useEffect(() => {
-    axios.get(`api/month_distance?month="${monthValue}"`)
+    axios.get(`/api/month_distance?month="${monthValue}"`)
       .then(res => {
         setGraphData(res.data.data.currentUserPostsPerMonth);
       })
