@@ -87,6 +87,10 @@ GEM
     ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.12.13)
     groupdate (5.2.2)
       activesupport (>= 5)
     hpricot (0.8.6)
@@ -228,6 +232,8 @@ DEPENDENCIES
   chartkick
   devise
   devise-i18n
+  graphiql-rails
+  graphql
   groupdate
   html2slim
   jbuilder (~> 2.7)

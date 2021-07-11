@@ -1,29 +1,64 @@
 import * as React from "react";
 import { Bar } from 'react-chartjs-2';
+import axios from 'axios';
 
-const { useState } = React;
+const { useState, useMemo, useEffect, memo } = React;
+
+type GraphData = {
+  distance: number,
+  postedAt: string,
+}
 
 type MonthSelectProps = {
   monthValues: string[],
   currentMonth: string,
-  currentDates: string[],
-  currentDistances: (number | null)[],
 };
 
-const MonthSelect: React.FC<MonthSelectProps> = ( { monthValues, currentMonth, currentDates, currentDistances } ) => {
-  const [monthValue, setMonthValue] = useState<string>(currentMonth);
-  const [distanceData, setDistanceData] = useState<(number | null)[]>(currentDistances)
+type DataType = {
+  labels: string[];
+  datasets: {
+      label: string;
+      data: number[];
+      backgroundColor: string;
+  }[];
+};
 
-  const data = {
-    labels: currentDates,
-    datasets: [
+type BarGraphProps = {
+  data: DataType,
+}
+
+const BarGraph: React.FC<BarGraphProps> = memo(({ data }) => {
+  return (
+    <Bar
+      data={data}
+    />
+  );
+})
+
+const MonthSelect: React.FC<MonthSelectProps> = ( { monthValues, currentMonth } ) => {
+  const [monthValue, setMonthValue] = useState<string>(currentMonth);
+  const [graphData, setGraphData] = useState<GraphData[]>([]);
+
+  const data: DataType = useMemo(() => {
+    return (
       {
-        label: '走行距離(km)',
-        data: distanceData,
-        backgroundColor: 'rgb(75, 192, 192)',
-      }
-    ],
-  };
+        labels: graphData.map((data: GraphData) => data.postedAt),
+        datasets: [
+          {
+            label: '走行距離(km)',
+            data: graphData.map((data: GraphData) => data.distance),
+            backgroundColor: 'rgb(75, 192, 192)',
+          }
+        ],
+      });
+  }, [graphData]);
+
+  useEffect(() => {
+    axios.get(`api/month_distance?month="${monthValue}"`)
+      .then(res => {
+        setGraphData(res.data.data.currentUserPostsPerMonth);
+      })
+  }, [monthValue]);
 
   return (
     <>
@@ -33,11 +68,11 @@ const MonthSelect: React.FC<MonthSelectProps> = ( { monthValues, currentMonth, c
           <option key={monthValue} value={monthValue}>{monthValue}</option>
         );
       })}
-    </select>
-    <Bar
-      data={data}
-    />
-  </>
+      </select>
+      <BarGraph
+        data={data}
+      />
+    </>
   );
 };
 
