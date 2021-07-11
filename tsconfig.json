@@ -9,8 +9,10 @@
     "sourceMap": true,
     "target": "es5",
     "jsx": "react",
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": "app/javascript"
   },
+  "include": ["app/javascript"],
   "exclude": [
     "**/*.spec.ts",
     "node_modules",

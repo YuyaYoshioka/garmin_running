@@ -1,41 +1,21 @@
 import * as React from "react";
-import { Bar } from 'react-chartjs-2';
 import axios from 'axios';
+import { DataType, BarGraph } from 'components/BarGraph';
+import { MonthSelectTag } from 'components/MonthSelectTag';
 
-const { useState, useMemo, useEffect, memo } = React;
+const { useState, useMemo, useEffect } = React;
 
 type GraphData = {
   distance: number,
   postedAt: string,
 }
 
-type MonthSelectProps = {
+type DistancePageProps = {
   monthValues: string[],
   currentMonth: string,
 };
 
-type DataType = {
-  labels: string[];
-  datasets: {
-      label: string;
-      data: number[];
-      backgroundColor: string;
-  }[];
-};
-
-type BarGraphProps = {
-  data: DataType,
-}
-
-const BarGraph: React.FC<BarGraphProps> = memo(({ data }) => {
-  return (
-    <Bar
-      data={data}
-    />
-  );
-})
-
-const MonthSelect: React.FC<MonthSelectProps> = ( { monthValues, currentMonth } ) => {
+const DistancePage: React.FC<DistancePageProps> = ( { monthValues, currentMonth } ) => {
   const [monthValue, setMonthValue] = useState<string>(currentMonth);
   const [graphData, setGraphData] = useState<GraphData[]>([]);
 
@@ -62,13 +42,11 @@ const MonthSelect: React.FC<MonthSelectProps> = ( { monthValues, currentMonth } 
 
   return (
     <>
-      <select value={monthValue} onChange={(e) => setMonthValue(e.target.value)}>
-      {monthValues.map((monthValue) => {
-        return (
-          <option key={monthValue} value={monthValue}>{monthValue}</option>
-        );
-      })}
-      </select>
+      <MonthSelectTag
+        monthValue={monthValue}
+        monthValues={monthValues}
+        handleChange={(value: string) => setMonthValue(value)}
+      />
       <BarGraph
         data={data}
       />
@@ -76,4 +54,4 @@ const MonthSelect: React.FC<MonthSelectProps> = ( { monthValues, currentMonth } 
   );
 };
 
-export default MonthSelect;
+export default DistancePage;
