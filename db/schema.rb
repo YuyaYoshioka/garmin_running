@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_17_150522) do
+ActiveRecord::Schema.define(version: 2021_07_17_151444) do
 
   create_table "posts", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2021_07_17_150522) do
     t.integer "velocity_minute", default: 0, null: false
     t.integer "normal_heartbeat", null: false
     t.integer "max_heartbeat", null: false
-    t.integer "maximal_oxygen_consumption", null: false
-    t.integer "lactate_threshold", null: false
-    t.integer "body_weight", null: false
+    t.float "maximal_oxygen_consumption", null: false
+    t.float "lactate_threshold", null: false
+    t.float "body_weight", null: false
     t.date "posted_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 2021_07_17_150522) do
     t.integer "age", null: false
     t.integer "normal_heartbeat", null: false
     t.integer "max_heartbeat", null: false
-    t.integer "maximal_oxygen_consumption", null: false
-    t.integer "lactate_threshold", null: false
+    t.float "maximal_oxygen_consumption", null: false
+    t.float "lactate_threshold", null: false
     t.integer "sex", null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "body_weight", default: 0, null: false
+    t.float "body_weight", default: 0.0, null: false
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
