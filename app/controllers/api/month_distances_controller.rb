@@ -4,7 +4,7 @@ module Api
     def show
       query_string = "
       {
-        currentUserPostsPerMonth(userId: 1, postedAt: #{params[:month]}) {
+        currentUserPostsPerMonth(userId: #{current_user.id}, postedAt: #{params[:month]}) {
           distance
           postedAt
         }
