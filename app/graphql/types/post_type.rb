@@ -4,12 +4,12 @@ module Types
     field :user_id, Integer, null: false
     field :title, String, null: false
     field :content, String, null: false
-    field :distance, Integer, null: false
+    field :distance, Float, null: false
     field :velocity_minute, Integer, null: false
     field :normal_heartbeat, Integer, null: false
     field :max_heartbeat, Integer, null: false
-    field :maximal_oxygen_consumption, Integer, null: false
-    field :lactate_threshold, Integer, null: false
+    field :maximal_oxygen_consumption, Float, null: false
+    field :lactate_threshold, Float, null: false
     field :body_weight, Integer, null: false
     field :posted_at, GraphQL::Types::ISO8601Date, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
