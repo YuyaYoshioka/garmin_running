@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_04_085051) do
+ActiveRecord::Schema.define(version: 2021_07_17_150522) do
 
   create_table "posts", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
     t.text "content", null: false
-    t.integer "distance", default: 0, null: false
+    t.float "distance", default: 0.0, null: false
     t.integer "velocity_minute", default: 0, null: false
     t.integer "normal_heartbeat", null: false
     t.integer "max_heartbeat", null: false
